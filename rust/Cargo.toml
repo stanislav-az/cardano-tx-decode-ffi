@@ -1,0 +1,15 @@
+[package]
+name = "cardano_tx_decode"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+name = "cardano_tx_decode_lib"
+crate-type = ["staticlib"]
+
+[dependencies]
+cardano-serialization-lib = "11.1.0"
+cbor_event = "2.2.0"
+hex = "0.4.3"
