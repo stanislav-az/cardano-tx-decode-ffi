@@ -21,7 +21,18 @@ maintainer:         st.zhdanovich@gmail.com
 -- category:
 extra-source-files: CHANGELOG.md
 
-executable cardano-tx-decode-ffi
+-- TODO /home/stan/rust/cardano-tx-decode-ffi rm absolute path
+library
+    default-language:   Haskell2010
+    exposed-modules:
+      Cbor
+    build-depends:
+      base >= 4.9 && < 5,
+    hs-source-dirs: src
+    extra-libraries:     cardano_tx_decode_lib, pthread
+    extra-lib-dirs:      /home/stan/rust/cardano-tx-decode-ffi/rust/target/release
+
+executable ffi-runner
     main-is:          Main.hs
 
     -- Modules included in this executable, other than Main.
@@ -29,6 +40,10 @@ executable cardano-tx-decode-ffi
 
     -- LANGUAGE extensions used by modules in this package.
     -- other-extensions:
-    build-depends:    base ^>=4.16.3.0
+    build-depends:
+        base >= 4.9 && < 5,
+        cardano-tx-decode-ffi
     hs-source-dirs:   app
     default-language: Haskell2010
+    extra-libraries:     cardano_tx_decode_lib, pthread
+    extra-lib-dirs:      /home/stan/rust/cardano-tx-decode-ffi/rust/target/release
