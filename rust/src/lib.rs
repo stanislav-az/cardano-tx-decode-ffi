@@ -22,14 +22,14 @@ pub extern "C" fn tx_cbor_to_json(ptr: Str, out: StrOut) {
         if let Ok(tx_hex) = cstring.to_str() {
             let tx = deserialize_tx(tx_hex);
             let json = match tx.map(|t| t.to_json()) {
-                    Err(e) => e,
-                    Ok(Err(json_err)) => json_err.to_string(),
-                    Ok(Ok(res)) => res,
-                };
+                Err(e) => e,
+                Ok(Err(json_err)) => json_err.to_string(),
+                Ok(Ok(res)) => res,
+            };
             let res = CString::new(json).expect("CString::new failed");
             let count = res.to_bytes_with_nul().len();
             let raw = res.into_raw();
-            raw.copy_to(out, count); 
+            raw.copy_to(out, count);
         } else {
             panic!("Unable to convert input");
         }
