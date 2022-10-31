@@ -7,6 +7,7 @@ use std::io::Cursor;
 pub type Str = *const c_char;
 pub type StrOut = *mut c_char;
 
+// This function converts hex encoded tx CBOR into cardano_serialization_lib::Transaction.
 fn deserialize_tx(tx_hex: &str) -> Result<Transaction, String> {
     let tx_bytes = hex::decode(tx_hex).map_err(|e| e.to_string())?;
     let mut raw = Deserializer::from(Cursor::new(&tx_bytes));
@@ -15,6 +16,9 @@ fn deserialize_tx(tx_hex: &str) -> Result<Transaction, String> {
 }
 
 // TODO return empty instead of panic?
+// This function converts hex encoded tx CBOR into JSON.
+// Fn inputs are: ptr - cbor hex, out - pointer to json string output.
+// If any error occurred, it is converted to string and directed to out.
 #[no_mangle]
 pub extern "C" fn tx_cbor_to_json(ptr: Str, out: StrOut) {
     unsafe {

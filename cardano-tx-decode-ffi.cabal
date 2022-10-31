@@ -30,7 +30,7 @@ library
       base >= 4.9 && < 5,
     hs-source-dirs: src
     extra-libraries:     cardano_tx_decode_lib, pthread
-    extra-lib-dirs:      /home/stan/rust/cardano-tx-decode-ffi/rust/target/release
+    extra-lib-dirs:      /home/stanf/rust/cardano-tx-decode-ffi/rust/target/release
 
 executable ffi-runner
     main-is:          Main.hs
@@ -46,4 +46,4 @@ executable ffi-runner
     hs-source-dirs:   app
     default-language: Haskell2010
     extra-libraries:     cardano_tx_decode_lib, pthread
-    extra-lib-dirs:      /home/stan/rust/cardano-tx-decode-ffi/rust/target/release
+    extra-lib-dirs:      /home/stanf/rust/cardano-tx-decode-ffi/rust/target/release
