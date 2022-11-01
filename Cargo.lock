@@ -67,7 +67,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "cardano_tx_decode"
+name = "cardanotxdecode"
 version = "0.1.0"
 dependencies = [
  "cardano-serialization-lib",
