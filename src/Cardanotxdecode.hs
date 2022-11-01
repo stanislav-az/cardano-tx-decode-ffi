@@ -14,8 +14,23 @@
 --   work on top of a `.rs` source file (or a `.rlib`, but this is unlikely as
 --   this format has purposely no public specifications).
 
-module Cardanotxdecode (tx_cbor_to_json) where
+module Cardanotxdecode (txCborToJson) where
 
-import Foreign.C.String (CString)
+import Foreign.C.String
+import           System.IO.Unsafe (unsafePerformIO)
 
 foreign import ccall unsafe "__c_tx_cbor_to_json" tx_cbor_to_json :: CString -> CString -> IO ()
+
+-- Note on the call to unsafePerformIO here: tx_cbor_to_json does not do any side effects
+-- apart from memory manipulations which are contained inside txCborToJson function
+-- for discussion see Real World Haskell Chapter 17. Interfacing with C: the FFI. Putting it all together.
+-- http://book.realworldhaskell.org/read/interfacing-with-c-the-ffi.html#id655783
+-- TODO use `newForeignPtr finalizerFree` for output and `alloca` for input if memory leaks (test it)
+-- TODO use Data.ByteString.useAsCString for input
+txCborToJson :: String -> String
+txCborToJson cborHex = unsafePerformIO $ do
+  str <- newCString cborHex
+  out <- newCString $ replicate 16000 's' -- TODO this should be a large string to allocate enough memory: is it safe?
+  _ <- tx_cbor_to_json str out
+  txJson <- peekCString out
+  pure txJson

@@ -95,3 +95,11 @@ library
 -- We would rather rely on `cabal init --non-interactive` to generate this file
 -- but there is no CLI arg to set `build-type: Custom` on which it sadly
 -- currently have to rely on.
+
+executable manual-test-cbor
+    main-is:          Main.hs
+    build-depends:
+        base >= 4.9 && < 5,
+        cardanotxdecode
+    hs-source-dirs:   manual-test-cbor
+    default-language: Haskell2010
