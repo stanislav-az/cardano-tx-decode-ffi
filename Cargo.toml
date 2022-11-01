@@ -13,3 +13,4 @@ crate-type = ["staticlib"]
 cardano-serialization-lib = "11.1.0"
 cbor_event = "2.2.0"
 hex = "0.4.3"
+hs-bindgen = "0.5.2"

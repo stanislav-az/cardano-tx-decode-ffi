@@ -3,6 +3,16 @@
 version = 3
 
 [[package]]
+name = "antlion"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f89fe573d87f5ecd8a06e5cba62d87d5a5beb98f4ab982e3790d0d59a2126414"
+dependencies = [
+ "proc-macro2",
+ "quote",
+]
+
+[[package]]
 name = "autocfg"
 version = "1.1.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -73,6 +83,7 @@ dependencies = [
  "cardano-serialization-lib",
  "cbor_event",
  "hex",
+ "hs-bindgen",
 ]
 
 [[package]]
@@ -136,6 +147,17 @@ dependencies = [
 ]
 
 [[package]]
+name = "displaydoc"
+version = "0.2.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3bf95dc3f046b9da4f2d51833c0d3547d8564ef6910f5c1ed130306a75b92886"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
 name = "dyn-clone"
 version = "1.0.9"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -190,6 +212,46 @@ name = "hex"
 version = "0.4.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7f24254aa9a54b5c858eaee2f5bccdb46aaf0e486a595ed5fd8f86ba55232a70"
+
+[[package]]
+name = "hs-bindgen"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d0324482a7536313aa6e0c1037bee038fad69000609a32b7dbb0d723fd967b33"
+dependencies = [
+ "hs-bindgen-derive",
+ "hs-bindgen-traits",
+]
+
+[[package]]
+name = "hs-bindgen-derive"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "fb82451821acec9b2f6cde7b3b1c98465e96624c218b78efb7d5c4b4ff67b8a6"
+dependencies = [
+ "antlion",
+ "displaydoc",
+ "hs-bindgen-traits",
+ "proc-macro2",
+ "quote",
+ "semver",
+ "serde",
+ "syn",
+ "thiserror",
+ "toml",
+]
+
+[[package]]
+name = "hs-bindgen-traits"
+version = "0.5.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "af02a5cad0382a7b0d491ca0b7952f10a27acfb143d805f1f80693814a2a3e5e"
+dependencies = [
+ "displaydoc",
+ "proc-macro2",
+ "quote",
+ "thiserror",
+]
 
 [[package]]
 name = "itertools"
@@ -408,6 +470,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "semver"
+version = "1.0.14"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e25dfac463d778e353db5be2449d1cce89bd6fd23c9f1ea21310ce6e5a1b29c4"
+
+[[package]]
 name = "serde"
 version = "1.0.145"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -482,6 +550,35 @@ dependencies = [
  "proc-macro2",
  "quote",
  "unicode-ident",
+]
+
+[[package]]
+name = "thiserror"
+version = "1.0.37"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "10deb33631e3c9018b9baf9dcbbc4f737320d2b576bac10f6aefa048fa407e3e"
+dependencies = [
+ "thiserror-impl",
+]
+
+[[package]]
+name = "thiserror-impl"
+version = "1.0.37"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "982d17546b47146b28f7c22e3d08465f6b8903d0ea13c1660d9d84a6e7adcdbb"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "toml"
+version = "0.5.9"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8d82e1a7758622a465f8cee077614c73484dac5b836c02ff6a40d5d1010324d7"
+dependencies = [
+ "serde",
 ]
 
 [[package]]
